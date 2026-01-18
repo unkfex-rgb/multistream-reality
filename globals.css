@@ -1,0 +1,56 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffcc00, #ff0066, #5b00ff);
+  color: white;
+}
+
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+.player {
+  position: relative;
+  border: 4px solid gold;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+.player iframe {
+  width: 100%;
+  height: 60vh;
+  border: none;
+}
+
+.label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.6);
+  padding: 8px 14px;
+  border-radius: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+button {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+button.active {
+  border: 3px solid gold;
+  background: rgba(255,255,255,0.3);
+}
