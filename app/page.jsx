@@ -18,17 +18,23 @@ const cameras = [
 
 export default function Home() {
   const [active, setActive] = useState(0)
+  const [auto, setAuto] = useState(true)
+  const [intervalTime, setIntervalTime] = useState(20000)
 
   useEffect(() => {
+    if (!auto) return
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % cameras.length)
-    }, 20000)
+    }, intervalTime)
     return () => clearInterval(timer)
-  }, [])
+  }, [auto, intervalTime])
 
   return (
     <div className="container">
-      <h1>BBB 26 • Multicam</h1>
+      <header>
+        <div className="logo">BBB 2026</div>
+        <div className="live">AO VIVO</div>
+      </header>
 
       <div className="player">
         <iframe
@@ -40,17 +46,46 @@ export default function Home() {
         <span className="label">{cameras[active].name}</span>
       </div>
 
+      <div className="controls">
+        <label>
+          🎬 Modo Diretor
+          <input
+            type="checkbox"
+            checked={!auto}
+            onChange={() => setAuto(!auto)}
+          />
+        </label>
+
+        <select
+          value={intervalTime}
+          onChange={(e) => setIntervalTime(Number(e.target.value))}
+        >
+          <option value={10000}>10s</option>
+          <option value={20000}>20s</option>
+          <option value={60000}>1 min</option>
+        </select>
+      </div>
+
       <div className="grid">
         {cameras.map((cam, i) => (
           <button
             key={cam.id}
             className={i === active ? 'active' : ''}
-            onClick={() => setActive(i)}
+            onClick={() => {
+              setActive(i)
+              setAuto(false)
+            }}
           >
             {cam.name}
           </button>
         ))}
       </div>
+
+      <footer>
+        <span>Dev by</span>
+        <a href="https://instagram.com/corintia420" target="_blank">Instagram</a>
+        <a href="https://x.com/sccpfex" target="_blank">X</a>
+      </footer>
     </div>
   )
 }
