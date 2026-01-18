@@ -3,12 +3,12 @@ import "./globals.css";
 
 export const metadata = {
   title: "BBB26 • Multicam",
-  description: "Multicam ao vivo",
+  description: "Multicam ao vivo BBB 2026",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-BR">
       <body>{children}</body>
     </html>
   );
