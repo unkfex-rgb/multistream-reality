@@ -1,15 +1,15 @@
 
-import './globals.css'
+import "./globals.css";
 
 export const metadata = {
-  title: 'BBB 2026 Multicam',
-  description: 'Multicam estilo reality show'
-}
+  title: "BBB26 • Multicam",
+  description: "Multicam ao vivo",
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-br">
       <body>{children}</body>
     </html>
-  )
+  );
 }
