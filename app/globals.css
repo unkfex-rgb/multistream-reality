@@ -1,103 +1,113 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
-  background: linear-gradient(135deg, #ffd000, #ff0066, #4b00ff);
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(180deg, #0d0221, #1b0044);
   color: white;
 }
 
-.container {
-  padding: 16px;
-}
-
-header {
+.topo {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  margin: 16px 0;
 }
 
-.logo {
-  font-size: 28px;
-  font-weight: 800;
-  animation: glow 2s infinite;
+.logo-gradiente {
+  font-size: 36px;
+  font-weight: 900;
+  background: linear-gradient(90deg, gold, hotpink, dodgerblue);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: move 3s infinite;
 }
 
-@keyframes glow {
-  0% { text-shadow: 0 0 5px gold; }
-  50% { text-shadow: 0 0 20px gold; }
-  100% { text-shadow: 0 0 5px gold; }
+@keyframes move {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
 }
 
 .live {
-  background: red;
-  padding: 6px 14px;
-  border-radius: 20px;
-  animation: blink 1.5s infinite;
+  position: absolute;
+  right: 12px;
+  background: gold;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 10px;
+  animation: pulse 1.5s infinite;
 }
 
-@keyframes blink {
+@keyframes pulse {
   0% { opacity: 1 }
-  50% { opacity: 0.3 }
+  50% { opacity: .4 }
   100% { opacity: 1 }
 }
 
 .player {
-  border: 4px solid gold;
-  border-radius: 18px;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 3px solid gold;
+  border-radius: 16px;
   overflow: hidden;
-  margin: 14px 0;
 }
 
 .player iframe {
   width: 100%;
-  height: 60vh;
-  border: none;
+  height: 100%;
 }
 
 .label {
   position: absolute;
   bottom: 12px;
-  left: 12px;
-  background: rgba(0,0,0,0.6);
-  padding: 6px 12px;
-  border-radius: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.2);
+  padding: 8px 16px;
+  border-radius: 14px;
+  border: 2px solid gold;
 }
 
 .controls {
   display: flex;
+  justify-content: center;
   gap: 12px;
-  align-items: center;
-  margin-bottom: 12px;
+  margin: 12px 0;
+}
+
+button, select {
+  background: rgba(255,255,255,.1);
+  border: 1px solid gold;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
 }
 
-button {
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: rgba(255,255,255,0.15);
-  color: white;
-  cursor: pointer;
+.thumb {
+  padding: 10px;
 }
 
-button.active {
-  border: 3px solid gold;
-  background: rgba(255,255,255,0.3);
+.thumb.active {
+  border: 2px solid gold;
 }
 
-footer {
-  margin-top: 20px;
-  text-align: center;
-  opacity: 0.8;
+.footer {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
-footer a {
-  margin-left: 10px;
-  color: white;
-  text-decoration: none;
+.footer svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
 }
