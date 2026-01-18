@@ -3,61 +3,61 @@
 import { useState, useEffect } from "react";
 
 const CAMERAS = [
-  { name: "Acompanhe a casa", src: "EMBED1" },
-  { name: "Acompanhe a casa", src: "EMBED2" },
-  { name: "Acompanhe a casa", src: "EMBED3" },
-  { name: "Cozinha", src: "EMBED4" },
-  { name: "Cozinha 2", src: "EMBED5" },
-  { name: "Quarto Sonho de Eternidade", src: "EMBED6" },
-  { name: "Quarto Sonho de Voar", src: "EMBED7" },
-  { name: "Quarto Sonho do Grande Amor", src: "EMBED8" },
-  { name: "Banheiro SUPER CIMED", src: "EMBED9" },
-  { name: "Sala Sonho de Ser Milionário", src: "EMBED10" },
-  { name: "Academia NIVEA", src: "EMBED11" },
+  { name: "Acompanhe a casa", src: "https://rdcanais.top/bbb1alternativo" },
+  { name: "Acompanhe a casa", src: "https://rdcanais.top/bbb2alternativo" },
+  { name: "Acompanhe a casa", src: "https://rdcanais.top/bbb3alternativo" },
+  { name: "Cozinha", src: "https://rdcanais.top/bbb5alternativo" },
+  { name: "Quarto Sonho de Eternidade", src: "https://rdcanais.top/bbb6alternativo" },
+  { name: "Quarto Sonho de Voar", src: "https://rdcanais.top/bbb7alternativo" },
+  { name: "Quarto Sonho do Grande Amor", src: "https://rdcanais.top/bbb8alternativo" },
+  { name: "Cozinha 2", src: "https://rdcanais.top/bbb9alternativo" },
+  { name: "Banheiro SUPER CIMED", src: "https://rdcanais.top/bbb10alternativo" },
+  { name: "Sala Sonho de Ser Milionário", src: "https://rdcanais.top/bbb11alternativo" },
+  { name: "Academia NIVEA", src: "https://rdcanais.top/bbb12alternativo" },
 ];
 
 export default function Home() {
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(true);
-  const [intervalTime, setIntervalTime] = useState(20000);
+  const [time, setTime] = useState(20000);
 
   useEffect(() => {
     if (!auto) return;
-    const timer = setInterval(() => {
+    const t = setInterval(() => {
       setActive((prev) => (prev + 1) % CAMERAS.length);
-    }, intervalTime);
-    return () => clearInterval(timer);
-  }, [auto, intervalTime]);
+    }, time);
+    return () => clearInterval(t);
+  }, [auto, time]);
 
   return (
-    <main>
+    <main className="container">
       <header className="topo">
-        <div className="logo-gradiente">bbb26</div>
-        <div className="live">AO VIVO</div>
+        <h1 className="logo">BBB26</h1>
+        <span className="live">AO VIVO</span>
       </header>
 
-      <div className="player">
+      <section className="player">
         <iframe
           src={CAMERAS[active].src}
-          allow="autoplay; fullscreen"
+          allow="autoplay; encrypted-media"
           allowFullScreen
         />
         <span className="label">{CAMERAS[active].name}</span>
-      </div>
+      </section>
 
-      <div className="controls">
+      <section className="controls">
         <button onClick={() => setAuto(!auto)}>
-          🎬 {auto ? "Modo Diretor" : "Auto Troca"}
+          {auto ? "🎬 Modo Diretor" : "▶️ Auto Troca"}
         </button>
 
-        <select onChange={(e) => setIntervalTime(Number(e.target.value))}>
-          <option value="10000">10s</option>
-          <option value="20000" selected>20s</option>
-          <option value="60000">1 min</option>
+        <select value={time} onChange={(e) => setTime(Number(e.target.value))}>
+          <option value={10000}>10s</option>
+          <option value={20000}>20s</option>
+          <option value={60000}>1 min</option>
         </select>
-      </div>
+      </section>
 
-      <div className="grid">
+      <section className="grid">
         {CAMERAS.map((cam, i) => (
           <button
             key={i}
@@ -70,21 +70,17 @@ export default function Home() {
             {cam.name}
           </button>
         ))}
-      </div>
+      </section>
 
       <footer className="footer">
         <span>Dev by</span>
 
         <a href="https://instagram.com/corintia420" target="_blank">
-          <svg viewBox="0 0 24 24">
-            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10z"/>
-          </svg>
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" />
         </a>
 
         <a href="https://x.com/sccpfex" target="_blank">
-          <svg viewBox="0 0 24 24">
-            <path d="M18.3 2H21l-6.5 7.4L22 22h-6.6l-5.2-6.8L4 22H1.3l7-8L2 2h6.8l4.7 6.2L18.3 2z"/>
-          </svg>
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" />
         </a>
       </footer>
     </main>
