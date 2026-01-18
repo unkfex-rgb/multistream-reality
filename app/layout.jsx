@@ -1,9 +1,15 @@
-export const metadata = { title: 'Multistream Reality' };
+
+import './globals.css'
+
+export const metadata = {
+  title: 'BBB 26 Multicam',
+  description: 'Transmissão multicâmeras estilo reality',
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
-      <body style={{ margin: 0, background: '#000' }}>{children}</body>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
