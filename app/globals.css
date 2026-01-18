@@ -2,8 +2,14 @@
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
-  background: linear-gradient(180deg, #0d0221, #1b0044);
-  color: white;
+  background: linear-gradient(180deg, #12002f, #2a006a);
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px;
 }
 
 .topo {
@@ -11,47 +17,47 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin: 16px 0;
 }
 
-.logo-gradiente {
-  font-size: 36px;
+.logo {
+  font-size: 42px;
   font-weight: 900;
-  background: linear-gradient(90deg, gold, hotpink, dodgerblue);
-  background-size: 300% 300%;
+  background: linear-gradient(90deg, #ffd700, #ff4ecd, #00c8ff);
+  background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: move 3s infinite;
+  animation: gradient 4s infinite;
 }
 
-@keyframes move {
-  0% { background-position: 0% }
-  50% { background-position: 100% }
-  100% { background-position: 0% }
+@keyframes gradient {
+  0% { background-position: 0%; }
+  50% { background-position: 100%; }
+  100% { background-position: 0%; }
 }
 
 .live {
   position: absolute;
-  right: 12px;
+  right: 0;
   background: gold;
   color: black;
   padding: 6px 12px;
-  border-radius: 10px;
-  animation: pulse 1.5s infinite;
+  border-radius: 12px;
+  animation: pulse 1.2s infinite;
 }
 
 @keyframes pulse {
-  0% { opacity: 1 }
-  50% { opacity: .4 }
-  100% { opacity: 1 }
+  0% { opacity: 1; }
+  50% { opacity: .5; }
+  100% { opacity: 1; }
 }
 
 .player {
   position: relative;
-  aspect-ratio: 16 / 9;
-  border: 3px solid gold;
+  aspect-ratio: 16/9;
+  margin: 16px 0;
   border-radius: 16px;
   overflow: hidden;
+  border: 3px solid gold;
 }
 
 .player iframe {
@@ -64,17 +70,17 @@ body {
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255,255,255,.2);
+  background: rgba(0,0,0,.6);
   padding: 8px 16px;
   border-radius: 14px;
-  border: 2px solid gold;
+  border: 1px solid gold;
 }
 
 .controls {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin: 12px 0;
+  margin-bottom: 12px;
 }
 
 button, select {
@@ -87,7 +93,7 @@ button, select {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 8px;
 }
 
@@ -100,14 +106,14 @@ button, select {
 }
 
 .footer {
-  margin: 20px 0;
+  margin-top: 24px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 12px;
 }
 
-.footer svg {
-  width: 22px;
-  height: 22px;
-  fill: white;
+.footer img {
+  width: 20px;
+  filter: invert(1);
 }
