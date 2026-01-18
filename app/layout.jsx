@@ -2,8 +2,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'BBB 26 Multicam',
-  description: 'Transmissão multicâmeras estilo reality',
+  title: 'BBB 2026 Multicam',
+  description: 'Multicam estilo reality show'
 }
 
 export default function RootLayout({ children }) {
