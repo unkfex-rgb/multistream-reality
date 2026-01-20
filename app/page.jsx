@@ -1,6 +1,6 @@
 
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CAMERAS = [
   { name: "Acompanhe a casa", src: "https://rdcanais.top/bbb1alternativo" },
@@ -18,6 +18,11 @@ const CAMERAS = [
 
 export default function Home() {
   const [active, setActive] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(/Mobi|Android/i.test(navigator.userAgent));
+  }, []);
 
   return (
     <main className="container">
@@ -27,11 +32,22 @@ export default function Home() {
       </header>
 
       <section className="player">
-        <iframe
-          src={CAMERAS[active].src}
-          allow="encrypted-media; fullscreen"
-          allowFullScreen
-        />
+        {isMobile ? (
+          <a
+            href={CAMERAS[active].src}
+            target="_blank"
+            className="fallback"
+          >
+            Abrir câmera no navegador
+          </a>
+        ) : (
+          <iframe
+            src={CAMERAS[active].src}
+            allow="encrypted-media; fullscreen"
+            allowFullScreen
+          />
+        )}
+
         <span className="label">{CAMERAS[active].name}</span>
       </section>
 
@@ -47,6 +63,7 @@ export default function Home() {
             onClick={() => setActive(i)}
           >
             {cam.name}
+            {i === active && <span className="activeTag">ATIVA</span>}
           </button>
         ))}
       </section>
