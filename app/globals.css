@@ -17,7 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .logo {
@@ -27,7 +27,7 @@ body {
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 5s ease infinite;
+  animation: gradient 6s ease infinite;
 }
 
 @keyframes gradient {
@@ -60,11 +60,23 @@ body {
   border-radius: 16px;
   overflow: hidden;
   border: 3px solid gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .player iframe {
   width: 100%;
   height: 100%;
+}
+
+.fallback {
+  color: black;
+  background: gold;
+  padding: 16px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .label {
@@ -81,8 +93,8 @@ body {
 
 .hint {
   text-align: center;
-  margin: 12px 0 16px;
-  opacity: 0.8;
+  margin: 14px 0 18px;
+  opacity: 0.85;
   font-size: 14px;
 }
 
@@ -96,10 +108,11 @@ body {
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,215,0,.4);
   color: white;
-  padding: 12px;
-  border-radius: 14px;
+  padding: 14px;
+  border-radius: 16px;
   cursor: pointer;
   transition: all .2s ease;
+  position: relative;
 }
 
 .thumb:hover {
@@ -108,5 +121,19 @@ body {
 
 .thumb.active {
   border: 2px solid gold;
-  background: rgba(255,215,0,.12);
+  background: rgba(255,215,0,.15);
+  box-shadow: 0 0 12px rgba(255,215,0,.6);
 }
+
+.activeTag {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 11px;
+  background: gold;
+  color: black;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
