@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "BBB26 • Multicam",
-  description: "Multicam ao vivo BBB 2026",
+  description: "Escolha uma câmera e acompanhe ao vivo",
 };
 
 export default function RootLayout({ children }) {
