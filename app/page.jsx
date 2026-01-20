@@ -1,6 +1,6 @@
 
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const CAMERAS = [
   { name: "Acompanhe a casa", src: "https://rdcanais.top/bbb1alternativo" },
@@ -18,16 +18,6 @@ const CAMERAS = [
 
 export default function Home() {
   const [active, setActive] = useState(0);
-  const [auto, setAuto] = useState(true);
-  const [time, setTime] = useState(20000);
-
-  useEffect(() => {
-    if (!auto) return;
-    const t = setInterval(() => {
-      setActive((prev) => (prev + 1) % CAMERAS.length);
-    }, time);
-    return () => clearInterval(t);
-  }, [auto, time]);
 
   return (
     <main className="container">
@@ -39,50 +29,27 @@ export default function Home() {
       <section className="player">
         <iframe
           src={CAMERAS[active].src}
-          allow="autoplay; encrypted-media"
+          allow="encrypted-media; fullscreen"
           allowFullScreen
         />
         <span className="label">{CAMERAS[active].name}</span>
       </section>
 
-      <section className="controls">
-        <button onClick={() => setAuto(!auto)}>
-          {auto ? "🎬 Modo Diretor" : "▶️ Auto Troca"}
-        </button>
-
-        <select value={time} onChange={(e) => setTime(Number(e.target.value))}>
-          <option value={10000}>10s</option>
-          <option value={20000}>20s</option>
-          <option value={60000}>1 min</option>
-        </select>
-      </section>
+      <p className="hint">
+        Escolha uma câmera abaixo para acompanhar ao vivo.
+      </p>
 
       <section className="grid">
         {CAMERAS.map((cam, i) => (
           <button
             key={i}
             className={i === active ? "thumb active" : "thumb"}
-            onClick={() => {
-              setActive(i);
-              setAuto(false);
-            }}
+            onClick={() => setActive(i)}
           >
             {cam.name}
           </button>
         ))}
       </section>
-
-      <footer className="footer">
-        <span>Dev by</span>
-
-        <a href="https://instagram.com/corintia420" target="_blank">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" />
-        </a>
-
-        <a href="https://x.com/sccpfex" target="_blank">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" />
-        </a>
-      </footer>
     </main>
   );
 }
